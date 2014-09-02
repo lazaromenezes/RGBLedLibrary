@@ -1,4 +1,4 @@
-rgb_led
+RGB Led Library
 =======
 
-Simulador para jogo de airsoft, software para arduino.
+Util RGB Led Library for arduino
