@@ -4,12 +4,12 @@
 class RGBLed{
 
 private:
-	int _pinoVermelho;
+	int _redLightPin;
 	int _pinoVerde;
 	int _pinoAzul;
 
 public:
-	RGBLed(int pinoVermelho, int pinoVerde, int pinoAzul);
+	RGBLed(int redLightPin, int pinoVerde, int pinoAzul);
 	void acender(int vermelho, int verde, int azul);
 	void acender(const unsigned int (&valores)[3]);
 	void apagar();

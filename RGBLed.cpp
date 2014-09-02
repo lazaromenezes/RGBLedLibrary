@@ -16,11 +16,11 @@ const unsigned int RGBLed::COR_LIMA[3] = {MINIMO, MAXIMO, MAXIMO};
 
 const unsigned int RGBLed::COR_LARANJA[3] = {MAXIMO, 165, MINIMO};
 
-RGBLed::RGBLed(int pinoVermelho, int pinoVerde, int pinoAzul){
-	_pinoVermelho = pinoVermelho;
+RGBLed::RGBLed(int redLightPin, int pinoVerde, int pinoAzul){
+	_redLightPin = redLightPin;
 	_pinoVerde = pinoVerde;
 	_pinoAzul = pinoAzul;
-	pinMode(_pinoVermelho, OUTPUT);
+	pinMode(_redLightPin, OUTPUT);
 	pinMode(_pinoVerde, OUTPUT);
 	pinMode(_pinoAzul, OUTPUT);
 }
@@ -29,7 +29,7 @@ RGBLed::RGBLed(int pinoVermelho, int pinoVerde, int pinoAzul){
  * Acende o LED informando os valores de cada cor
  */
 void RGBLed::acender(int vermelho, int verde, int azul){
-	analogWrite(_pinoVermelho, vermelho);
+	analogWrite(_redLightPin, vermelho);
 	analogWrite(_pinoVerde, verde);
 	analogWrite(_pinoAzul, azul);
 }
@@ -41,7 +41,7 @@ void RGBLed::acender(const unsigned int (&valores)[3]){
 
 
 void RGBLed::apagar(){
-	analogWrite(_pinoVermelho, MINIMO);
+	analogWrite(_redLightPin,, MINIMO);
 	analogWrite(_pinoVerde, MINIMO);
 	analogWrite(_pinoAzul, MINIMO);
 }
