@@ -4,44 +4,36 @@
 #include "Arduino.h"
 #endif
 
-const unsigned int RGBLed::COR_BRANCO[3] = {MAXIMO, MAXIMO, MAXIMO};
+const unsigned int RGBLed::WHITE[3] = {MAX, MAX, MAX};
+const unsigned int RGBLed::RED[3] = {MAX, MIN, MIN};
+const unsigned int RGBLed::GREEN[3] = {MIN, MAX, MIN};
+const unsigned int RGBLed::BLUE[3] = {MIN, MIN, MAX};
+const unsigned int RGBLed::YELLOW[3] = {MAX, MAX, MIN};
+const unsigned int RGBLed::FUSCIA[3] = {MAX, MIN, MAX};
+const unsigned int RGBLed::LIME[3] = {MIN, MAX, MAX};
+const unsigned int RGBLed::ORANGE[3] = {MAX, 165, MIN};
 
-const unsigned int RGBLed::COR_VERMELHO[3] = {MAXIMO, MINIMO, MINIMO};
-const unsigned int RGBLed::COR_VERDE[3] = {MINIMO, MAXIMO, MINIMO};
-const unsigned int RGBLed::COR_AZUL[3] = {MINIMO, MINIMO, MAXIMO};
-
-const unsigned int RGBLed::COR_AMARELO[3] = {MAXIMO, MAXIMO, MINIMO};
-const unsigned int RGBLed::COR_FUSCIA[3] = {MAXIMO, MINIMO, MAXIMO};
-const unsigned int RGBLed::COR_LIMA[3] = {MINIMO, MAXIMO, MAXIMO};
-
-const unsigned int RGBLed::COR_LARANJA[3] = {MAXIMO, 165, MINIMO};
-
-RGBLed::RGBLed(int redLightPin, int pinoVerde, int pinoAzul){
+RGBLed::RGBLed(int redLightPin, int greenPin, int bluePin){
 	_redLightPin = redLightPin;
-	_pinoVerde = pinoVerde;
-	_pinoAzul = pinoAzul;
+	_greenLightPin = greenPin;
+	_blueLightPin = bluePin;
 	pinMode(_redLightPin, OUTPUT);
-	pinMode(_pinoVerde, OUTPUT);
-	pinMode(_pinoAzul, OUTPUT);
+	pinMode(_greenLightPin, OUTPUT);
+	pinMode(_blueLightPin, OUTPUT);
 }
 
-/**
- * Acende o LED informando os valores de cada cor
- */
-void RGBLed::acender(int vermelho, int verde, int azul){
-	analogWrite(_redLightPin, vermelho);
-	analogWrite(_pinoVerde, verde);
-	analogWrite(_pinoAzul, azul);
+void RGBLed::light(int red, int green, int blue){
+	analogWrite(_redLightPin, red);
+	analogWrite(_greenLightPin, green);
+	analogWrite(_blueLightPin, blue);
 }
 
-void RGBLed::acender(const unsigned int (&valores)[3]){
-	acender(valores[0], valores[1], valores[2]);
+void RGBLed::light(const unsigned int (&values)[3]){
+	light(values[0], values[1], values[2]);
 }
 
-
-
-void RGBLed::apagar(){
-	analogWrite(_redLightPin,, MINIMO);
-	analogWrite(_pinoVerde, MINIMO);
-	analogWrite(_pinoAzul, MINIMO);
+void RGBLed::putOut(){
+	analogWrite(_redLightPin, MIN);
+	analogWrite(_greenLightPin, MIN);
+	analogWrite(_blueLightPin, MIN);
 }
